@@ -3,6 +3,8 @@ package com.salted.board.service;
 import com.salted.board.entity.BoardEntity;
 import com.salted.board.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +15,8 @@ public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
 
-    public List<BoardEntity> selectAll(){
-        List<BoardEntity> list = boardRepository.findAll();
+    public Page<BoardEntity> selectAll(Pageable pageable){
+        Page<BoardEntity> list = boardRepository.findAll(pageable);
         return list;
     }
 
