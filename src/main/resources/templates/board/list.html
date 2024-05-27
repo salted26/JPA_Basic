@@ -12,10 +12,10 @@
     <div th:insert="~{header :: nav_header}"></div>
     <div class="wrapper">
         <div>
-            <img src="https://images.pexels.com/photos/66284/winter-nature-season-trees-66284.jpeg"
+            <img src="https://images.pexels.com/photos/2161649/pexels-photo-2161649.jpeg"
                  alt="blog" class="index_img"/>
         </div>
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -24,7 +24,7 @@
                 <th scope="col">Counts</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="list">
             <th:block th:each="list : ${list}">
                 <tr th:value="${list.bno}">
                     <th scope="row" th:text="${list.bno}"></th>
@@ -38,7 +38,7 @@
         <div class="paging">
             <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
                 <a th:if="${page != nowPage}" th:href="@{/board/list(page=${page -1})}" th:text="${page}" class="link"/>
-                <a th:if="${page == nowPage}" th:text="${page}" style="color:red" class="link"/>
+                <strong th:if="${page == nowPage}" th:text="${page}" style="color:red" class="link"/>
             </th:block>
         </div>
     </div>
